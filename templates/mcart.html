@@ -1,0 +1,73 @@
+{% extends "mlayout.html"%}
+{% block body%}
+
+<div class="container" style="margin-top: 10px;margin-bottom: 20px;">
+	<h2 class="text-center"><u>Cart</u></h2>
+	<p class="text-danger text-center">{{msg}}</p>
+
+<form action="/data" method="post" enctype="multipart/form-data">
+	<h4 >Select Image For Poster</h4>
+	<input type="file" name="file1" style="margin-bottom: 15px;" required>
+        <div class="col-3" style="margin-bottom: 30px;">
+             <label class="form-label" for="name">Enter Title  </label>
+            <input type="text" name="title" class="form-control" placeholder="Enter Title"  required>
+            
+        </div>
+        {% set cart= [] %}
+	
+
+
+	<h4 >Cart Items</h4>
+	{% for x1 in data %}
+	{% for x in data1 %}
+	{%if x1[1] == x[0] %}
+	{% set a= x[0] %}
+	<span hidden> {{ cart.append(a) }} 
+	{% set input_name = x[0] + 1 %}</span>
+	
+	<div class="row">
+		{% set fname = 'img/' + x[3] %}
+		<div class="col-3">
+			<img src="{{ url_for('static', filename=fname) }}" width="75px">
+			
+		</div>
+
+		<div class="col-3 card-title">
+			{{x[5]}}
+			
+		</div>
+		<div class="col-1 card-title">
+			<input type="text" class="form-control" min="1" value="1" pattern="[0-9]{1}" title="Quantity must be in Numbers" name="{{input_name}}">
+			
+		</div>
+
+		<div class="col-3">
+			<a href="/mcremove/{{x[0]}}">
+				<button type="button" class="btn btn-danger">Remove</button>
+			</a>
+		</div>
+		
+	</div>
+	<hr>
+	{% endif %}
+	{% endfor %}
+	{% endfor %}
+
+
+
+	<div class="col-3" style="margin-bottom: 30px;">
+             <label class="form-label" for="name">Enter Price ₹ :-  </label>
+            <input type="text" name="price" class="form-control" pattern="[0-9]{1,}"  placeholder="Enter Price in ₹"  required>
+            
+        </div>
+<center>
+	<input type="hidden" name="cart" value="{{cart}}">
+
+		
+		<button type="submit" class="btn btn-primary">Add</button>
+	
+</center>
+</form>
+</div>
+
+{% endblock %}

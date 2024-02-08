@@ -1,0 +1,149 @@
+{%extends 'adminlayout.html'%}
+{%block body %}
+
+
+<div class="container menu">
+    <h3><u>Add Menu Items :</u></h3>
+    <form action="/amenu" method="post" enctype="multipart/form-data">
+    <div class="row ">
+        <div class="col-3">
+             <label class="form-label" for="name">Name Of Item  </label>
+            <input type="text" name="name" class="form-control" placeholder="Enter Name" >
+            
+        </div>
+
+
+         <div class="col-3">
+              <label class="form-label" for="image">Image  </label>
+            <input type="file" name="file1" class="form-control"  >
+           
+        </div>
+
+         <div class="col-3">
+              <label class="form-label" for="catogary">Catogary  </label>
+           <select class="form-select" name="cat">
+               <option value="Bread">Bread</option>
+               <option value="Gravy">Gravy</option>
+               <option value="Dry">Dry</option>
+                <option value="Sweets">Sweets</option>
+                <option value="Salad">Salad</option>
+                <option value="Pickle">Pickle</option>
+
+           </select>
+            
+        </div>
+        
+
+         <div class="col-3 ">
+
+            <button type="submit"  class=" form-control btn btn-danger btn-block mb-3" >Add </button>
+            
+        </div>
+        
+    </div>
+    </form>
+</div>
+
+
+
+
+
+<div class="container menu">
+    <h3><u>Update Menu Items :</u></h3>
+    <form action="/umenu" method="post" enctype="multipart/form-data">
+    <div class="row ">
+        <div class="col-3">
+             <label class="form-label" for="id"> Item Id   </label>
+            <input type="text" name="id" class="form-control" placeholder="Enter Id" >
+            
+        </div>
+        <div class="col-3">
+             <label class="form-label" for="name">Name Of Item  </label>
+            <input type="text" name="name" class="form-control" placeholder="Enter Name" >
+            
+        </div>
+
+
+         <div class="col-3">
+              <label class="form-label" for="image">Image  </label>
+            <input type="file" name="file1" class="form-control"  >
+           
+        </div>
+
+         <div class="col-2">
+              <label class="form-label" for="catogary">Catogary  </label>
+           <select class="form-select" name="cat">
+               <option value="Bread">Bread</option>
+               <option value="Gravy">Gravy</option>
+               <option value="Dry">Dry</option>
+                <option value="Sweets">Sweets</option>
+                <option value="Salad">Salad</option>
+                <option value="Pickle">Pickle</option>
+
+           </select>
+            
+        </div>
+        
+
+         <div class="col-1">
+
+            <button type="submit"  class=" form-control btn btn-danger btn-block mb-3" >Update </button>
+            
+        </div>
+        
+    </div>
+    </form>
+</div>
+
+
+<div class="container table">
+ <h3><u> Menu Items :</u></h3>
+<table class="table align-middle mb-0 bg-white table-bordered ">
+  <thead class="bg-light">
+    <tr>
+      <th>Id</th>
+      <th>Name Of Item</th>
+      <th>Image</th>
+      <th>Catogary</th>
+      <th></th>
+      
+      
+    </tr>
+  </thead>
+  <tbody>
+    {%  for x in data %}
+    <tr>
+      
+      <td>
+        <p class="fw-normal mb-1">{{ x[0] }}</p>
+        
+      </td>
+     
+      <td>
+        <p class="fw-normal mb-1">{{ x[1] }}</p>
+        
+      </td>
+
+      <td>
+        <p class="fw-normal mb-1">{{ x[3] }}</p>
+        
+      </td>
+
+      <td>
+        <p class="fw-normal mb-1">{{ x[2] }}</p>
+        
+      </td>
+
+      <td>
+        <a href="/aremove/{{x[0]}}"><button class="btn btn-danger">Remove </button></a>
+        
+      </td>
+      
+      
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+
+{%endblock %}

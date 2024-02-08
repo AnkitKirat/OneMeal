@@ -1,0 +1,159 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+{% if data1%}
+<h2 class="text-center">Order in Process</h2>
+
+
+<div class="container table">
+
+<table class="table align-middle mb-0 bg-white table-bordered ">
+  <thead class="bg-light">
+    <tr>
+      <th>Order Id</th>
+      <th>Data & Time</th>
+      <th>User Email</th>
+      <th>User Name</th>
+      <th>Ordered Menu</th>
+      <th>Price</th>
+      <th>Mess Status</th>
+      <th>Delivery Partner</th>
+      <th>Delivery Status</th>
+      <th> </th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    {%  for x in data1 %}
+    <tr>
+      
+      <td>
+        <p class="fw-normal mb-1">{{ x[0] }}</p>
+        
+      </td>
+     
+      <td>
+        <p class="fw-normal mb-1">{{ x[1] }}</p>
+      </td>
+
+
+      <td>
+        <p class="fw-normal mb-1">{{ x[2] }}</p>
+      </td>
+      <td>
+        <p class="fw-normal mb-1">{{ x[3] }}</p>
+      </td>
+
+
+      <td>
+        <p class="fw-normal mb-1"> {{ x[5] }} </p>
+      </td>
+      
+
+
+      <td>
+        <p class="fw-normal mb-1">{{ x[6] }}</p>
+      </td>
+
+      <td>
+        <p class="fw-normal mb-1">{%if x[7]== "None" %} Pending
+          {%else %}
+          {{x[7]}}
+        {%endif %}</p>
+      </td>
+      <td>
+        <p class="fw-normal mb-1">{%if x[9]== "None" %} Not Yet Assigned
+          {%else %}
+          {{x[9]}}
+        {%endif %}</p>
+      </td>
+      <td>
+        <p class="fw-normal mb-1">{%if x[8]== "None" %} {{x[8]}}
+           {%else %}
+          {{[8]}}
+        {%endif %}</p>
+      </td>
+
+      <td>
+        <a href="/cancel/{{x[0]}}">
+          <button class="btn btn-primary"> Cancel Order</button>
+        </a>
+      </td>
+
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+{%endif%}
+
+<h2 class="text-center">Order History</h2>
+<h5 class="text-center">{{msg}}</h5>
+
+<div class="container table">
+
+<table class="table align-middle mb-0 bg-white table-bordered ">
+  <thead class="bg-light">
+    <tr>
+      <th>Order Id</th>
+      <th>Data Time</th>
+      <th>User Email</th>
+      <th>User Name</th>
+      <th>Order Menu</th>
+      <th>Price</th>
+      <th>Status</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+  	{%  for x in data %}
+    <tr>
+      
+      <td>
+        <p class="fw-normal mb-1">{{ x[0] }}</p>
+        
+      </td>
+     
+      <td>
+      	<p class="fw-normal mb-1">{{ x[1] }}</p>
+      </td>
+
+
+      <td>
+      	<p class="fw-normal mb-1">{{ x[2] }}</p>
+      </td>
+      <td>
+      	<p class="fw-normal mb-1">{{ x[3] }} {{ x[4] }}</p>
+      </td>
+
+
+      <td>
+      	<p class="fw-normal mb-1"> {{ x[5] }} </p>
+      </td>
+      
+
+
+      <td>
+        <p class="fw-normal mb-1">{{ x[6] }}</p>
+      </td>
+       <td>
+        <p class="fw-normal mb-1">
+          {%if x[7] == "Reject" %}
+        Rejected By Mess 
+        {%elif x[8] == "Reject"%}
+        Rejected By Delivery Partner
+        {%elif x[10] == "Reject" %}
+        Rejected By You
+        {%elif x[8] == "Delivered" %}
+        Delivered
+        {%endif%}
+      </p>
+      </td>
+
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+{% endblock %}

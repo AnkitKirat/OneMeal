@@ -1,0 +1,75 @@
+{% extends "dlayout.html"%}
+{% block body%}
+{% if data%}
+<h2 class="text-center text-success">Assigned Order</h2>
+
+<div class="container">
+	<h4>Delivery Details</h4>
+<div class="row" style="margin-bottom:10px;">
+	<div class="col-2">
+		Name :-
+	</div>
+
+	<div class="col-4">
+		<input type="text" value="{{data[3]}} " class="form-control" disabled>
+	</div>
+</div>
+
+<div class="row" style="margin-bottom:10px;">
+	<div class="col-2">
+		Delivery Address :-
+	</div>
+
+	<div class="col-4">
+		<input type="text" value="{{data[12]}} " class="form-control" disabled>
+	</div>
+</div>
+
+
+<div class="row" style="margin-bottom:10px;">
+	<div class="col-2">
+		Mobile Number :-
+	</div>
+
+	<div class="col-4">
+		<input type="text" value="{{data[11]}} " class="form-control" disabled>
+	</div>
+</div>
+<div class="row " style="margin-bottom:10px;margin-left:210px;">
+
+	<div class="col col-lg-2">
+		<a href="/dcancel/{{data[0]}}">
+			<button class="btn btn-danger"> Cancel Order</button>
+		</a>
+	</div>
+
+	{% if data[8] == "None" %}
+	<div class="col col-lg-2">
+		<a href="/dreach/{{data[0]}}">
+			<button class="btn btn-danger">Reached To Mess</button>
+		</a>
+	</div>
+	{% elif data[8] == "Reached" %}
+	<div class="col col-lg-2">
+		<a href="/dcollect/{{data[0]}}">
+			<button class="btn btn-danger">Collected</button>
+		</a>
+	</div>
+	{% elif data[8] == "Collect" %}
+	<div class="col col-lg-2">
+		<a href="/ddelivered/{{data[0]}}">
+			<button class="btn btn-danger">Delivered</button>
+		</a>
+	</div>
+	{% endif%}
+</div>
+
+
+</div>
+
+{% else%}
+<h3 class="text-center text-danger">No Order Assigned</h3>
+{% endif%}
+{% endblock%}
+
+

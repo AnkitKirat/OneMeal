@@ -1,0 +1,73 @@
+{% extends "mlayout.html" %}
+
+{% block body %}
+
+<h2 class="text-center">Order History</h2>
+<h5 class="text-center">{{msg}}</h5>
+
+<div class="container table">
+
+<table class="table align-middle mb-0 bg-white table-bordered ">
+  <thead class="bg-light">
+    <tr>
+      <th>Order Id</th>
+      <th>Data Time</th>
+      <th>User Email</th>
+      <th>User Name</th>
+      <th>Order Menu</th>
+      <th>Price</th>
+      <th>Status</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+  	{%  for x in data %}
+    <tr>
+      
+      <td>
+        <p class="fw-normal mb-1">{{ x[0] }}</p>
+        
+      </td>
+     
+      <td>
+      	<p class="fw-normal mb-1">{{ x[1] }}</p>
+      </td>
+
+
+      <td>
+      	<p class="fw-normal mb-1">{{ x[2] }}</p>
+      </td>
+      <td>
+      	<p class="fw-normal mb-1">{{ x[3] }} </p>
+      </td>
+
+
+      <td>
+      	<p class="fw-normal mb-1"> {{ x[5] }} </p>
+      </td>
+      
+
+
+      <td>
+        <p class="fw-normal mb-1">{{ x[6] }}</p>
+      </td>
+      <td>
+        <p class="fw-normal mb-1">
+          {%if x[7] == "Reject" %}
+        Rejected By You 
+        {%elif x[8] == "Reject"  %}
+        Rejected By Delivery Partner
+        {%elif x[10] == "Reject" %}
+        Rejected By User
+        {%elif x[8] == "Delivered" %}
+        Delivered
+        {%endif%}
+      </p>
+      </td>
+
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+{% endblock %}

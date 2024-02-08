@@ -1,0 +1,140 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<section class="back">
+        <div >
+          <img class="img" src="{{url_for('static',filename='img/img.png')}}"  alt="">
+        </div>
+</section>
+
+
+
+
+
+<div class="row card_row ">
+  <div class="col-md-8">
+  <h2 ><u><i>One Steap To Get Your Meal</i></u></h2>
+  <div class="row">
+   {% for t in d %}
+{% for x in data %}
+{%if x[0] == t[0]  %}
+  <div class="col-md-6" style="margin-bottom:20px;">
+   
+    <div class="card cardu ">
+      {%set fname = 'img/' + x[4] %}
+      <img class="card-img-top" src="{{url_for('static',filename= fname)}}"  >
+      
+    
+    <div class="card-body">
+    
+      <h4 class="card-title">{{x[5]}}</h4>
+    
+ <div class="row no-gutters">
+  <h5 class="col-10 card-subtitle mb-2 text-muted">Item</h5>
+  <h5 class="col-2 card-subtitle mb-2 text-muted">Qty</h5>
+</div>
+{%set k =module.loads(x[2]) %}
+{%set result = ''.join(k).replace(',', '') %}
+{%set result = ''.join(result).replace('[', '') %}
+{%set result = ''.join(result).replace(']', '') %}
+{%set result = ''.join(result).replace(' ', '') %}
+
+
+
+{%set i =module.loads(x[3]) %}
+
+{%set result1 = ''.join(i).replace(',', '') %}
+{%set result1 = ''.join(result1).replace('[', '') %}
+{%set result1 = ''.join(result1).replace(']', '') %}
+{%set result1 = ''.join(result1).replace(x[5], '') %}
+
+
+
+
+  
+
+ {%for l in range(0,result|length) %}
+      <div class="row no-gutters">
+   {%for m in data1 %}
+   {% set a= m[0] %}
+      {% if a == result[l]| int  %}
+   
+   
+  <div class="col-10">{{m[1]}}</div>
+  
+  <div class="col-2">{{result1[l]}}</div>
+  {% endif %}
+  {% endfor %}
+</div>
+
+
+{% endfor %}
+ <div class="row no-gutters" style="margin-top:15px;">
+  <h5 class="col-10 card-subtitle mb-2 text-muted">Price :- </h5>
+  <h5 class="col-2 card-subtitle mb-2 text-muted"> {{ x[6] }}</h5>
+</div>
+
+ 
+
+<div style="margin-top:10px;margin-bottom: 20px;">
+  <center>
+  <a href="/uremovecart/{{x[0]}}">
+    <button class="btn btn-danger " style="padding-bottom:10px;"> Remove</button>
+  </a>
+  </center>
+</div>
+    </div>
+  </div>
+
+</div>
+
+
+{% endif %}
+{% endfor %}
+{% endfor %}
+</div>
+</div>
+
+
+<div class="col-md-4">
+
+
+<div class="card mb-4" style="margin-top:75px;">
+          <div class="card-header py-3">
+            <h5 class="mb-0">Summary</h5>
+          </div>
+          <div class="card-body">
+            <ul class="list-group list-group-flush">
+              <li
+                class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+                Subtotal
+                <span> ₹{{total}}</span>
+               </li>
+               <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                Shipping
+                <span>₹30</span>
+               </li>
+               <li
+                class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+                <div>
+                  <strong>Total amount</strong>
+                  
+                </div>
+                <span><strong>₹{{total + 30}}</strong></span>
+              </li>
+            </ul>
+            <a href="/liveorder/{{total + 30}}">
+
+            <button type="button" class="btn btn-primary btn-lg btn-block">
+               Place  Order
+            </button>
+              </a>
+             
+          </div>
+        </div>
+
+</div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends 'adminlayout.html' %}
+{% block body %}
+
+<div class="addadmin">
+<div class="container card "  style="
+        margin-top: 50px;
+        margin-bottom: 50px;
+        background: hsla(0, 0%, 100%, 0.8);
+        backdrop-filter: blur(30px);
+        ">
+	<h2 class="text-center" style="
+        margin-top: 20px;"">Add Admin</h2>
+<form action="/addadmin" method="post">
+
+
+  <!-- Email input -->
+  <div class="form-outline mb-4">
+  	<label class="form-label" for="form2Example1">Username</label>
+    <input type="email" id="form2Example1" class="form-control" name="username" />
+    
+  </div>
+
+  <!-- Password input -->
+  <div class="form-outline mb-4">
+  	<label class="form-label" for="form2Example2">Password</label>
+    <input type="password" id="form2Example2" class="form-control" name="pass" />
+    
+  </div>
+
+
+  <!-- Submit button -->
+  <div class="text-center">
+  <input type="submit" class="btn btn-danger btn-block mb-4"
+  value="Add">
+</div>
+
+</form>
+</div>
+</div>
+
+<div class="container table">
+
+<table class="table align-middle mb-0 bg-white table-bordered ">
+  <thead class="bg-light">
+    <tr>
+      <th>Username</th>
+      <th>Password</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+  	{%  for x in data %}
+    <tr>
+      
+      <td>
+        <p class="fw-normal mb-1">{{ x[0] }}</p>
+        
+      </td>
+     
+      <td>*********</td>
+      
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+{% endblock %}

@@ -1,0 +1,69 @@
+{%extends 'adminlayout.html'%}
+{%block body %}
+<div class="container">
+
+<table class="table align-middle mb-0 bg-white">
+  <thead class="bg-light">
+    <tr>
+      <th>Name</th>
+      
+      <th>Status</th>
+      
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {%  for x in adata %}
+    <tr>
+      <td>
+        <div class="d-flex align-items-center">
+          <i class="fa-regular fa-user fa-2xl"  style="color: #dc1e1e;"></i>
+          <div class="ms-3">
+            <p class="fw-bold mb-1">{{ x[0] }}</p>
+            <p class="text-muted mb-0">{{ x[2] }}</p>
+          </div>
+        </div>
+      </td>
+
+      <td>
+        <span class="badge bg-success rounded-pill d-inline">{{ x[9] }}</span>
+      </td>
+    
+      <td>
+        <a href="/assign/{{id1}}/{{x[2]}}">
+        <button type="button" class="btn btn-link btn-sm btn-rounded">
+          Assign
+        </button>
+      </a>
+      </td>
+    </tr>
+   
+   {% endfor %}
+
+    {%  for x in bdata %}
+    <tr>
+      <td>
+        <div class="d-flex align-items-center">
+           <i class="fa-regular fa-user fa-2xl"  style="color: #dc1e1e;"></i>
+          <div class="ms-3">
+            <p class="fw-bold mb-1">{{ x[0] }}</p>
+            <p class="text-muted mb-0">{{ x[2] }}</p>
+          </div>
+        </div>
+      </td>
+
+      <td>
+        <span class="badge bg-warning rounded-pill d-inline">{{ x[9] }}</span>
+      </td>
+    
+      
+    </tr>
+   
+   {% endfor %}
+   
+  </tbody>
+</table>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+{% block body %}
+ <div class="card mx-4 mx-md-5 shadow-5-strong" style="
+        margin-top: 70px;
+        background: hsla(0, 0%, 100%, 0.8);
+        backdrop-filter: blur(30px);
+        ">
+    <div class="card-body py-5 px-md-5">
+ 
+<!-- Pills navs -->
+<center><h2>Login</h2>
+
+<div>
+  <p class="text-danger">
+  {{message}}
+
+</p></div></center>
+<div class="tab-content">
+  <div class="tab-pane fade show active">
+    <form action="/login" method="post">
+
+
+      <!-- Email input -->
+      <div class="form-outline mb-4">
+      	 <label class="form-label" for="loginName">Email or username</label>
+        <input type="email" id="loginName" name="email" class="form-control" />
+       
+      </div>
+
+      <!-- Password input -->
+      <div class="form-outline mb-4">
+      	 <label class="form-label" for="loginPassword">Password</label>
+        <input type="password" id="loginPassword" name="pass"  class="form-control" />
+       
+      </div>
+
+      
+
+       
+      <!-- Submit button -->
+      <center>
+      <button   type="submit" class="btn btn-primary btn-block mb-4">Sign in</button></center>
+
+      <!-- Register buttons -->
+      
+      <div class="text-center">
+        <p>Not a member? <a href="/register">Register </a></p>
+       
+  
+    
+      </div>
+    </form>
+  </div>
+</div>
+</div>
+
+
+{% endblock %}

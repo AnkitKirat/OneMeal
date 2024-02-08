@@ -1,6 +1,6 @@
 # Steps To Run The Project<br>
 <p> Note:- It has four module Customer, Mess, Admin, Delivery Partner they all have same login UI</p><br>
-## step 1: Open project in any ide that support python(suggested ide pycharm).<br>
+## step 1: Open project in any IDE that support python(suggested IDE pycharm).<br>
 ## step 2: open sql file in MySQL workbeanch.<br>
 ## step 3: connect sql using your username and password at the top of the main.py file.<br>
 ## step 4: After running the application register as customer/mess.<br>

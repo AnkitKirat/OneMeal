@@ -1,4 +1,5 @@
 # Steps To Run The Project<br>
+<p><b>Author:- Ankit Kirat</b></p>
 <p> Note:- It has four module Customer, Mess, Admin, Delivery Partner they all have same login UI</p><br>
 ## step 1: Open project in any IDE that support python(suggested IDE pycharm).<br>
 ## step 2: open sql file in MySQL workbeanch.<br>
